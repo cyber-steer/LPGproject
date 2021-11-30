@@ -237,7 +237,6 @@ public class Order extends JPanel {
 		double ptank=0, btank=0;
 		int iptank=0, ibtank=0;
 		String queryString = "select ptank,btank from tank";
-		DataBase.dbConnect();
 		ResultSet resultSet = DataBase.query("select", queryString);
 		while(resultSet.next()) {
 			ptank = resultSet.getInt("ptank");
@@ -259,7 +258,6 @@ public class Order extends JPanel {
 		comboBase.removeAllItems();
 		comboBase.addItem("==º±≈√==");
 		String queryString = "SELECT DISTINCT bname FROM base";
-		DataBase.dbConnect();
 		ResultSet resultSet = DataBase.query("select", queryString);
 		while(resultSet.next()) {
 			comboBase.addItem(resultSet.getString("bname"));

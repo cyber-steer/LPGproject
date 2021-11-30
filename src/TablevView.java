@@ -50,7 +50,6 @@ public class TablevView extends JPanel {
 	void view() throws SQLException {
 		model.setNumRows(0);
 		String queryString = "select * from customer order by cusno";
-		DataBase.dbConnect();
 		ResultSet resultSet = DataBase.query("select", queryString);
 		while(resultSet.next()) {
 			model.addRow(new Object[] {
@@ -62,7 +61,6 @@ public class TablevView extends JPanel {
 	}
 	void delete() throws SQLException {
 		String sqlString = "DELETE FROM `lpgstationdb`.`customer` WHERE `customer`.`cusno` ="+selet+" LIMIT 1;";
-		DataBase.dbConnect();
 		DataBase.query("delet", sqlString);
 	}
 }

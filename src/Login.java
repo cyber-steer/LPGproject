@@ -48,10 +48,10 @@ public class Login extends JFrame {
 		buttonPanel.setBounds(36, 86, 247, 42);
 		panel.add(buttonPanel);
 		buttonPanel.setLayout(new GridLayout(0, 2, 10, 0));
-		
 		btnNewButton = new JButton("Guest \uB85C\uADF8\uC778");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				DataBase.dbConnect();
 				Window.condition = Window.GUEST;
 				try {
 					window = new Window();
@@ -68,8 +68,9 @@ public class Login extends JFrame {
 		btnNewButton_1 = new JButton("\uAD00\uB9AC\uC790 \uB85C\uADF8\uC778");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				if(true) {
-				if(textID.getText().equals("sys") && textPW.getText().equals("sys") ) {
+				if(true) {
+//				if(textID.getText().equals("sys") && textPW.getText().equals("sys") ) {
+					DataBase.dbConnect();
 					Window.condition = Window.ADMIN;
 					try {
 						window = new Window();
@@ -80,10 +81,10 @@ public class Login extends JFrame {
 					window.setVisible(true);
 					setVisible(false);
 				}
-				else {
-					textID.setText("");
-					textPW.setText("");
-				}
+//				else {
+//					textID.setText("");
+//					textPW.setText("");
+//				}
 			}
 		});
 		buttonPanel.add(btnNewButton_1);

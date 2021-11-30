@@ -27,9 +27,6 @@ public class DateSearch extends JPanel {
 			public void stateChanged(ChangeEvent e) {
 				Date value = (Date) model.getValue();
 				Date next = (Date) model.getNextValue();
-//				if (value != null && next != null)
-//					System.out.println("value = " + df.format(value) + "\t"
-//							+ "next = " + df.format(next));
 			}
 		});
 		JPanel panel = new JPanel();

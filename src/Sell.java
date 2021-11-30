@@ -257,8 +257,6 @@ public class Sell extends JPanel {
 		btnReset.setBounds(249, 165, 67, 23);
 		center.add(btnReset);
 		comboBoxItemAdd();
-		
-		System.out.println("가격"+propanePrice.getText());
 		priceView();
 		//===========================================이벤트
 		comboCode.addActionListener(new ActionListener() {
@@ -374,7 +372,6 @@ public class Sell extends JPanel {
 	public void comboBoxItemAdd() throws SQLException {
 		comboCode.removeAllItems();
 		String queryString = "SELECT DISTINCT cname FROM customer";
-		DataBase.dbConnect();
 		ResultSet resultSet = DataBase.query("select", queryString);
 		comboCode.addItem("--선택--");
 		while(resultSet.next()) {
@@ -384,7 +381,6 @@ public class Sell extends JPanel {
 	public void comboBoxView(String cname) throws SQLException {
 		comboNumber.removeAllItems();
 		String queryString = "SELECT cnumber FROM customer where cname=\""+cname+"\";";
-		DataBase.dbConnect();
 		ResultSet resultSet = DataBase.query("select", queryString);
 		while(resultSet.next()) {
 			comboNumber.addItem(resultSet.getString("cnumber"));
@@ -392,7 +388,6 @@ public class Sell extends JPanel {
 	}
 	public void priceView() throws SQLException {
 		String queryString = "select propane, bhutan from price";
-		DataBase.dbConnect();
 		ResultSet resultSet = DataBase.query("select", queryString);
 		while(resultSet.next()) {
 			propanePrice.setText(resultSet.getInt("propane")+"");

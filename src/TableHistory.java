@@ -46,7 +46,6 @@ public class TableHistory extends JPanel{
 	void view() throws SQLException {
 		model.setNumRows(0);
 		String queryString = "select * from sell order by sno";
-		DataBase.dbConnect();
 		ResultSet resultSet = DataBase.query("select", queryString);
 		while(resultSet.next()) {
 			model.addRow(new Object[] {
@@ -59,7 +58,6 @@ public class TableHistory extends JPanel{
 	}
 	void view(String queryString) throws SQLException {
 		model.setNumRows(0);
-		DataBase.dbConnect();
 		ResultSet resultSet = DataBase.query("select", queryString);
 		while(resultSet.next()) {
 			model.addRow(new Object[] {
@@ -72,7 +70,6 @@ public class TableHistory extends JPanel{
 	}
 	void delete() throws SQLException {
 		String sqlString = "DELETE FROM `lpgstationdb`.`sell` WHERE `sell`.`cusno` ="+selet+" LIMIT 1;";
-		DataBase.dbConnect();
 		DataBase.query("delet", sqlString);
 	}
 

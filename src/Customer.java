@@ -102,8 +102,6 @@ public class Customer extends JPanel {
 		panel_2.setLayout(new BorderLayout(0, 0));
 		panel_2.add(tablevView, BorderLayout.CENTER);
 
-		String[] headStrings = {"번호","거래처 명","차량번호"};
-		String[][] dataStrings = {{"1","2","3"},{"4","5","6"}};
 		btnSave.setVisible(false);
 		
 		propane = Integer.parseInt(txtPropanePrice.getText());
@@ -184,8 +182,7 @@ public class Customer extends JPanel {
 	}
 
 	public void priceView() throws SQLException {
-		String queryString = "select propane, bhutan from price";
-		DataBase.dbConnect();
+		String queryString = (new SqlString("select", "price")).stringReturn();
 		ResultSet resultSet = DataBase.query("select", queryString);
 		while(resultSet.next()) {
 			txtPropanePrice.setText(resultSet.getInt("propane")+"");

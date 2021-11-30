@@ -46,7 +46,6 @@ public class TableOrder extends JPanel{
 	void view() throws SQLException {
 		model.setNumRows(0);
 		String queryString = "select * from orderdata order by ono";
-		DataBase.dbConnect();
 		ResultSet resultSet = DataBase.query("select", queryString);
 		while(resultSet.next()) {
 			model.addRow(new Object[] {
@@ -60,7 +59,6 @@ public class TableOrder extends JPanel{
 	}
 	void delete() throws SQLException {
 		String sqlString = "DELETE FROM `lpgstationdb`.`orderdata` WHERE `orderdata`.`ono` ="+selet+" LIMIT 1;";
-		DataBase.dbConnect();
 		DataBase.query("delet", sqlString);
 	}
 

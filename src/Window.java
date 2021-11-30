@@ -143,6 +143,7 @@ public class Window extends JFrame {
 		//====================================================================
 		menuItemLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				DataBase.dbDis();
 				setVisible(false);
 				new Login();
 			}

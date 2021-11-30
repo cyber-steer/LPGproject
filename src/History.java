@@ -320,7 +320,6 @@ public class History extends JPanel {
 	public void delet() throws SQLException {
 		System.out.println("delet");
 		String sqlString = "DELETE FROM `lpgstationdb`.`sell` WHERE `sell`.`sno` ="+selet+" LIMIT 1;";
-		DataBase.dbConnect();
 		DataBase.query("delet", sqlString);
 	}
 	private class JTableMouseListener implements MouseListener{
