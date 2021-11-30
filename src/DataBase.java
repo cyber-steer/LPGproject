@@ -77,19 +77,13 @@ public class DataBase {
 			propaneTotalPrice = resultSet.getInt("propane") * propaneValue;
 			bhutanTotalPrice = resultSet.getInt("bhutan") * bhutanValue;
 		}
-		System.out.println("단가 검색은 끝남");
 		//탱크 현황 검색
 		sqlString = (new SqlString("select", "tank")).stringReturn();
-		System.out.println(sqlString);
 		resultSet = query("select", sqlString);
 		while(resultSet.next()) {
 			ptank = resultSet.getInt("ptank");
 			btank = resultSet.getInt("btank");
 		}
-		System.out.println("탱크 현황까지 끝남");
-//		sqlString = "UPDATE `lpgstationdb`.`tank` SET `ptank` = '"
-//				+(ptank-propaneValue)+"',`btank` = '"
-//				+(btank-bhutanValue)+"' WHERE `tank`.`bno` =1 LIMIT 1 ;";
 		sqlString = (new SqlString((ptank-propaneValue), (btank-bhutanValue))).stringReturn();
 		query("update", sqlString);
 		sqlString = "INSERT INTO `lpgstationdb`.`sell` "
