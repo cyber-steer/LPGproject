@@ -23,7 +23,6 @@ public class SqlString{
 		int bhutanValue=Integer.parseInt(kg13)*13;
 
 		sqlString = "select * from price";
-		System.out.println("수정부분");
 		
 		//단가 검색후 계산
 		ResultSet resultSet = DataBase.query("select", sqlString);
@@ -39,7 +38,7 @@ public class SqlString{
 			ptank = resultSet.getInt("ptank");
 			btank = resultSet.getInt("btank");
 		}
-		sqlString = (new SqlString((ptank-propaneValue), (btank-bhutanValue))).stringReturn();
+		sqlString = (new SqlString("tank",(ptank-propaneValue), (btank-bhutanValue))).stringReturn();
 		DataBase.query("update", sqlString);
 		sqlString = "INSERT INTO `lpgstationdb`.`sell` "
 				+ "(`sno`, `cname`, `cnumber`, `sday`, `kg3`, `kg5`, `kg10`, `kg20`, `kg50`, `kg13`, `sprice`) VALUES (NULL, '"
@@ -60,16 +59,25 @@ public class SqlString{
 				+ cnameString+"','"
 				+ cnumberString+"');";
 	}
-	public SqlString(int ptank, int btank) {
-		sqlString = "UPDATE `lpgstationdb`.`tank` SET `ptank` = '"
-				+ptank+"',`btank` = '"
-				+btank+"' WHERE `tank`.`bno` =1 LIMIT 1 ;";
+	public SqlString(String table, int firthInt, int secondInt) {
+		switch(table) {
+		case "tank":
+			sqlString = "UPDATE `lpgstationdb`.`tank` SET `ptank` = '"
+					+firthInt+"',`btank` = '"
+					+secondInt+"' WHERE `tank`.`bno` =1 LIMIT 1 ;";
+			break;
+		case "price":
+			sqlString = "UPDATE `lpgstationdb`.`price` SET `propane` = '"
+					+firthInt+"', `bhutan` = '"
+					+secondInt+"' WHERE `price`.`pno` =1 LIMIT 1 ;";
+			break;
+		}
 	}
-	public SqlString(String order, String table) {
+	public SqlString(String table) {
 		sqlString = "select * from "+table+" order by 1;";
 	}
-	public SqlString(String order, int number) {
-		sqlString = "DELETE FROM `lpgstationdb`.`customer` WHERE `customer`.`cusno` ="+number+" LIMIT 1;";
+	public SqlString(String table, int number) {
+		sqlString = "DELETE FROM `lpgstationdb`.`"+table+"` WHERE `customer`.`cusno` ="+number+" LIMIT 1;";
 	}
 	public String stringReturn() {
 		return sqlString;

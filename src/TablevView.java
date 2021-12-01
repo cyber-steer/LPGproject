@@ -34,7 +34,8 @@ public class TablevView extends JPanel {
 			JTable jTable = (JTable)e.getSource();
 			int row = jTable.getSelectedRow();
 			int col = jTable.getSelectedColumn();
-
+			System.out.println("row: "+row);
+			System.out.println("col: "+col);
             selet = (Integer) (model.getValueAt(row, 0));
 		}
 		public void mousePressed(MouseEvent e) {
@@ -47,10 +48,8 @@ public class TablevView extends JPanel {
 		}
 	}
 	void view() throws SQLException {
-
 		model.setNumRows(0);
-		String sqlString = (new SqlString("select", "customer")).stringReturn();
-		System.out.println(sqlString);
+		String sqlString = (new SqlString("customer")).stringReturn();
 		ResultSet resultSet = DataBase.query("select", sqlString);
 		while(resultSet.next()) {
 			model.addRow(new Object[] {
@@ -61,7 +60,7 @@ public class TablevView extends JPanel {
 		}
 	}
 	void delete() throws SQLException {
-		String sqlString = (new SqlString("delete", selet)).stringReturn();
-		DataBase.query("delet", sqlString);
+		String sqlString = (new SqlString("customer", selet)).stringReturn();
+		DataBase.delete(sqlString);
 	}
 }

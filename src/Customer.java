@@ -141,19 +141,22 @@ public class Customer extends JPanel {
 				txtPropanePrice.enable(false);
 				txtBhutanPrice.enable(false);
 				count = 0;
+				String sqlString = (new SqlString("price", propane, bhutan)).stringReturn();
+				DataBase.update(sqlString);
 			}
 		});
 		
 
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DataBase.save(textCname.getText(), textCnumber.getText());
+				String sqlString = (new SqlString("insert", textCname.getText(), 
+						textCnumber.getText())).stringReturn();
+				DataBase.save(sqlString);
 				textCname.setText("");
 				textCnumber.setText("");
 				try {
 					tablevView.view();
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -178,7 +181,7 @@ public class Customer extends JPanel {
 	}
 
 	public void priceView() throws SQLException {
-		String queryString = (new SqlString("select", "price")).stringReturn();
+		String queryString = (new SqlString("price")).stringReturn();
 		ResultSet resultSet = DataBase.query("select", queryString);
 		while(resultSet.next()) {
 			txtPropanePrice.setText(resultSet.getInt("propane")+"");

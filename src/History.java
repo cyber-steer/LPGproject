@@ -86,7 +86,7 @@ public class History extends JPanel {
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_3.setBounds(12, 43, 201, 201);
+		panel_3.setBounds(24, 43, 201, 201);
 		panel_1.add(panel_3);
 		panel_3.setLayout(null);
 		
@@ -210,23 +210,23 @@ public class History extends JPanel {
 		panel_4_3_2_1.add(textResult);
 		
 		btnDelete = new JButton("\uC0AD\uC81C");
-		btnDelete.setBounds(122, 254, 91, 23);
+		btnDelete.setBounds(134, 254, 91, 23);
 		panel_1.add(btnDelete);
 		
 		btnRevise = new JButton("\uC218\uC815");
-		btnRevise.setBounds(12, 254, 91, 23);
+		btnRevise.setBounds(24, 254, 91, 23);
 		panel_1.add(btnRevise);
 		
 		JButton btnSearch = new JButton("\uAC80\uC0C9");
-		btnSearch.setBounds(152, 10, 71, 23);
+		btnSearch.setBounds(164, 10, 71, 23);
 		panel_1.add(btnSearch);
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(38, 10, 108, 23);
+		comboBox.setBounds(50, 10, 108, 23);
 		panel_1.add(comboBox);
 		
 		JLabel lblNewLabel_1 = new JLabel("\uAC70\uB798\uCC98");
-		lblNewLabel_1.setBounds(0, 14, 49, 15);
+		lblNewLabel_1.setBounds(12, 14, 49, 15);
 		panel_1.add(lblNewLabel_1);
 		//======================================================
 		btnDelete.addActionListener(new ActionListener() {

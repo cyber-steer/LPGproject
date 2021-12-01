@@ -48,13 +48,28 @@ public class DataBase {
 		}
 		return resultSet;
 	}
-	public static void save(String cnameString, String cnumberString){
+	public static void save(String sqlString){
 		try {
-			String sqlString = (new SqlString("insert", cnameString, cnumberString)).stringReturn();
 			query("insert", sqlString);
-			System.out.println("customer 새 항목 추가 성공!");
+			System.out.println("새 항목 추가 성공!");
 		}catch (Exception e) {
-			System.out.println("customer 새 항목 추가 실패!");
+			System.out.println("새 항목 추가 실패!");
+		}
+	}
+	public static void delete(String sqlString) {
+		try {
+			query("delete", sqlString);
+			System.out.println("항목 삭제 성공!");
+		}catch (Exception e) {
+			System.out.println("항목 삭제 실패!");
+		}
+	}
+	public static void update(String sqlString) {
+		try {
+			query("update", sqlString);
+			System.out.println("항목 수정 성공!");
+		}catch (Exception e) {
+			System.out.println("항목 수정 실패!");
 		}
 	}
 	public static void save(String kg3,String kg5,String kg10,String kg20,String kg50,String kg13,String cname, String cnumber) throws SQLException{

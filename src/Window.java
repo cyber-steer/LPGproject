@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.concurrent.locks.Condition;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -110,6 +111,7 @@ public class Window extends JFrame {
 					panel.remove(manager);
 					panel.add(sell);
 					try {
+						sell.sell.priceView();
 						sell.sell.comboBoxItemAdd();
 						sell.order.tankView();
 					} catch (SQLException e1) {
@@ -137,7 +139,6 @@ public class Window extends JFrame {
 			menuBar.add(menuHelp);
 			sell = new MenuSell();
 			panel.add(sell.sell);
-			
 		}
 		//====================================================================
 		menuItemLogout.addActionListener(new ActionListener() {

@@ -13,10 +13,10 @@ public class MenuManager extends JPanel {
 	 */
 	public MenuManager() throws SQLException {
 		customer = new Customer();
+		history = new History();
 		setLayout(new BorderLayout(0, 0));
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		add(tabbedPane, BorderLayout.CENTER);
-		history = new History();
 		
 		tabbedPane.addTab("기록",history);
 		tabbedPane.addTab("거래처",customer);

@@ -316,8 +316,11 @@ public class Sell extends JPanel {
 					count =+1;
 				}else {
 					try {
-						DataBase.save(text3kg.getText(), text5kg.getText(),text10kg.getText(), text20kg.getText(), text50kg.getText(), text13kg.getText()
-								,comboCode.getSelectedItem().toString(),comboNumber.getSelectedItem().toString());
+//						DataBase.save(text3kg.getText(), text5kg.getText(),text10kg.getText(), text20kg.getText(), text50kg.getText(), text13kg.getText()
+//								,comboCode.getSelectedItem().toString(),comboNumber.getSelectedItem().toString());
+						String sqlString = (new SqlString(text3kg.getText(), text5kg.getText(),text10kg.getText(), text20kg.getText(), text50kg.getText(), text13kg.getText()
+								,comboCode.getSelectedItem().toString(),comboNumber.getSelectedItem().toString())).stringReturn();
+						DataBase.save(sqlString);
 			
 					} catch (SQLException e1) {
 					}
@@ -374,7 +377,7 @@ public class Sell extends JPanel {
 	}
 	public void comboBoxItemAdd() throws SQLException {
 		comboCode.removeAllItems();
-		String sqlString = (new SqlString("select", "customer")).stringReturn();
+		String sqlString = (new SqlString("customer")).stringReturn();
 		ResultSet resultSet = DataBase.query("select", sqlString);
 		comboCode.addItem("--º±≈√--");
 		while(resultSet.next()) {
@@ -383,14 +386,14 @@ public class Sell extends JPanel {
 	}
 	public void comboBoxView(String cname) throws SQLException {
 		comboNumber.removeAllItems();
-		String sqlString = (new SqlString("select", "customer")).stringReturn();
+		String sqlString = (new SqlString("customer")).stringReturn();
 		ResultSet resultSet = DataBase.query("select", sqlString);
 		while(resultSet.next()) {
 			comboNumber.addItem(resultSet.getString("cnumber"));
 		}
 	}
 	public void priceView() throws SQLException {
-		String sqlString = (new SqlString("select", "price")).stringReturn();
+		String sqlString = (new SqlString("price")).stringReturn();
 		ResultSet resultSet = DataBase.query("select", sqlString);
 		while(resultSet.next()) {
 			propanePrice.setText(resultSet.getInt("propane")+"");
