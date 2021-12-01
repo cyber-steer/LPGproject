@@ -35,7 +35,6 @@ public class TablevView extends JPanel {
 			int row = jTable.getSelectedRow();
 			int col = jTable.getSelectedColumn();
 
-            System.out.println(model.getValueAt(row, 0));
             selet = (Integer) (model.getValueAt(row, 0));
 		}
 		public void mousePressed(MouseEvent e) {
@@ -48,9 +47,11 @@ public class TablevView extends JPanel {
 		}
 	}
 	void view() throws SQLException {
+
 		model.setNumRows(0);
-		String queryString = "select * from customer order by cusno";
-		ResultSet resultSet = DataBase.query("select", queryString);
+		String sqlString = (new SqlString("select", "customer")).stringReturn();
+		System.out.println(sqlString);
+		ResultSet resultSet = DataBase.query("select", sqlString);
 		while(resultSet.next()) {
 			model.addRow(new Object[] {
 					resultSet.getInt("cusno"),
@@ -60,7 +61,7 @@ public class TablevView extends JPanel {
 		}
 	}
 	void delete() throws SQLException {
-		String sqlString = "DELETE FROM `lpgstationdb`.`customer` WHERE `customer`.`cusno` ="+selet+" LIMIT 1;";
+		String sqlString = (new SqlString("delete", selet)).stringReturn();
 		DataBase.query("delet", sqlString);
 	}
 }

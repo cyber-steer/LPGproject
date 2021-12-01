@@ -4,9 +4,6 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-import javax.swing.JRadioButton;
-import javax.swing.JList;
-import javax.swing.JTable;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -106,7 +103,6 @@ public class Customer extends JPanel {
 		
 		propane = Integer.parseInt(txtPropanePrice.getText());
 		bhutan = Integer.parseInt(txtBhutanPrice.getText());
-		
 		priceView();
 		//=======================================================¿Ã∫•∆Æ
 		btnRevise.addActionListener(new ActionListener() {

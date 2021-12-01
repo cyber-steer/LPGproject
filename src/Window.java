@@ -100,7 +100,6 @@ public class Window extends JFrame {
 		
 		menuItemManager = new JMenuItem("\uAD00\uB9AC\uD0ED");
 		menuManager.add(menuItemManager);
-			
 		//로그인 형태에따라 패널 추가
 		if(condition == ADMIN) {
 			menuBar.add(nemuSell);

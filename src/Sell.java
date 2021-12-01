@@ -318,6 +318,7 @@ public class Sell extends JPanel {
 					try {
 						DataBase.save(text3kg.getText(), text5kg.getText(),text10kg.getText(), text20kg.getText(), text50kg.getText(), text13kg.getText()
 								,comboCode.getSelectedItem().toString(),comboNumber.getSelectedItem().toString());
+			
 					} catch (SQLException e1) {
 					}
 					text3kg.setEnabled(true);
@@ -335,6 +336,8 @@ public class Sell extends JPanel {
 					textPropane.setText("kg");
 					textBhutan.setText("kg");
 					textresult.setText("원");
+					comboNumber.setEnabled(true);
+					comboCode.setEnabled(true);
 					count=0;
 					btn.setEnabled(true);
 					btn.setText("다음");
@@ -371,8 +374,8 @@ public class Sell extends JPanel {
 	}
 	public void comboBoxItemAdd() throws SQLException {
 		comboCode.removeAllItems();
-		String queryString = "SELECT DISTINCT cname FROM customer";
-		ResultSet resultSet = DataBase.query("select", queryString);
+		String sqlString = (new SqlString("select", "customer")).stringReturn();
+		ResultSet resultSet = DataBase.query("select", sqlString);
 		comboCode.addItem("--선택--");
 		while(resultSet.next()) {
 			comboCode.addItem(resultSet.getString("cname"));
@@ -380,15 +383,15 @@ public class Sell extends JPanel {
 	}
 	public void comboBoxView(String cname) throws SQLException {
 		comboNumber.removeAllItems();
-		String queryString = "SELECT cnumber FROM customer where cname=\""+cname+"\";";
-		ResultSet resultSet = DataBase.query("select", queryString);
+		String sqlString = (new SqlString("select", "customer")).stringReturn();
+		ResultSet resultSet = DataBase.query("select", sqlString);
 		while(resultSet.next()) {
 			comboNumber.addItem(resultSet.getString("cnumber"));
 		}
 	}
 	public void priceView() throws SQLException {
-		String queryString = "select propane, bhutan from price";
-		ResultSet resultSet = DataBase.query("select", queryString);
+		String sqlString = (new SqlString("select", "price")).stringReturn();
+		ResultSet resultSet = DataBase.query("select", sqlString);
 		while(resultSet.next()) {
 			propanePrice.setText(resultSet.getInt("propane")+"");
 			bhutanPrice.setText(resultSet.getInt("bhutan")+"");

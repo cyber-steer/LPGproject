@@ -14,7 +14,6 @@ public class MenuManager extends JPanel {
 	public MenuManager() throws SQLException {
 		customer = new Customer();
 		setLayout(new BorderLayout(0, 0));
-		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		add(tabbedPane, BorderLayout.CENTER);
 		history = new History();
